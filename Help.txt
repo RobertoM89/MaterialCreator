@@ -1,0 +1,9 @@
+-----------------------------------------------------------------------
+Material Creator
+-----------------------------------------------------------------------
+Authors:        Roberto Menicatti
+Email:          roberto.menicatti@gmail.it
+Affiliation:    BigRock Institute of Magic Technologies
+Version:        1.3 - December 2021
+Tested on Maya: 2019, 2020
+-----------------------------------------------------------------------
