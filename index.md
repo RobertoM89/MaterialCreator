@@ -8,7 +8,7 @@ MaterialCreator - for Autodesk Maya
 
 The latest release of Material Creator is available for **download [here]()**.
 
-**Material Creator** is a tool for Autodesk Maya developed by *[Roberto Menicatti](https://robertomenicatti.carrd.co/)**. It started as a school side-project at *BigRock Institute of Magic Technologies*. At the moment, further development is not planned to happen on a regular basis.
+**Material Creator** is a tool for Autodesk Maya developed by **[Roberto Menicatti](https://robertomenicatti.carrd.co/)**. It started as a school side-project at *BigRock Institute of Magic Technologies*. At the moment, further development is not planned to happen on a regular basis.
 
 ***
 
