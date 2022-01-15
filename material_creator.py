@@ -7,7 +7,7 @@ Authors:        Roberto Menicatti
 Email:          roberto.menicatti@gmail.it
 Affiliation:    BigRock Institute of Magic Technologies
 Version:        1.3 - December 2021
-Tested on Maya: 2020
+Tested on Maya: 2019, 2020
 -----------------------------------------------------------------------
 '''
 
@@ -15,8 +15,18 @@ import maya.cmds as my
 import os
 import maya.mel as mel
 import re
+import sys
+import urllib2
+from HTMLParser import HTMLParser
+import webbrowser
+
+##### REMEMBER TO UPDATE THIS AT EACH NEW RELEASE ##############################
 
 VERSION = "1.3"
+COMPATIBLE_VERSIONS = ["2019", "2020"]
+REPOSITORY_WIKI = 'https://robertom89.github.io/MaterialCreator/'
+
+################################################################################
 
 WINDOW = "mat_creator"
 ARNOLD = "Arnold"
@@ -35,6 +45,19 @@ PREFSUF_FIELD = "prefixSuffixField"
 PREFSUF_SEL = "prefixSuffixSelection"
 
 MAT_SUFFIX = "_MAT"
+
+
+class RepositoryParser(HTMLParser):
+    
+    def __init__(self):
+        HTMLParser.__init__(self)
+        
+        self.version = 0
+
+    def handle_data(self, data):
+        if data.startswith("Version"):
+            self.version = data.split(" ")[1]
+
 
 class Map():
 
@@ -285,9 +308,9 @@ class MatCreatorWindow():
         menuLayout = my.menuBarLayout(width=w)
         my.menu(label="Help", helpMenu=True)
         my.menuItem(label="About", command=about)
-        # my.menuItem(label="Changelog", command=changelog)
-        # my.menuItem(label="Help", command=helpmenu)
-        # my.menuItem(label="Online Guide", command=onlineGuide)
+        my.menuItem(label="Changelog", command=changelog)
+        my.menuItem(label="Help", command=helpmenu)
+        my.menuItem(label="Online Guide", command=onlineGuide)
 
         mainColLayout = my.columnLayout(width=w)
 
@@ -961,6 +984,10 @@ class OctaneMat(Mat):
         
         my.connectAttr(file_node + '.outTex', self.mat_node + '.Emission')
 
+
+## MENU ##################################################
+
+
 def about(*args):
     '''
     This function shows a window with the info about MaterialCreator.
@@ -978,5 +1005,137 @@ def about(*args):
     my.setParent( '..' )
     my.showWindow( window )
 
+
+def getScriptPath():
+
+    pathList = sys.path
+    rootpath = None
+
+    ## Look for icons folder
+    for path in pathList:
+        try:
+            dir = os.listdir(path)
+            for subdir in dir:
+                if "MaterialCreator" in subdir:
+                    rootpath = path
+                    break
+        except:
+            pass
+
+    return rootpath
+
+
+def helpmenu(*args):
+    '''
+    This function shows a window with the help of MaterialCreator.
+    '''
+
+    with open(os.path.join(getScriptPath(), "Help.txt"), 'r') as readme:
+        
+        content = readme.readlines()
+
+    readme_text = "".join(content[21:])
+
+    w = 800
+    h = 300
+    window = my.window( title="Help", widthHeight=(w, h), sizeable=True)
+    ml = my.columnLayout(adjustableColumn=True )
+    my.text(label="\nMaterialCreator - for Autodesk Maya - HELP\n", width=w, font='fixedWidthFont')
+    
+
+    form = my.formLayout(parent=ml, width=w)
+    sep = my.separator(style="in", height=3, width=w) 
+    scrollLayout = my.scrollLayout(horizontalScrollBarThickness=16, verticalScrollBarThickness=16, enableBackground=True, backgroundColor=[0.17, 0.17 , 0.17], borderVisible=True, childResizable=True)
+    
+    my.formLayout(form, edit=True, attachForm=[(sep, 'top', 5), 
+                                                (sep, 'left', 0), 
+                                                (sep, 'right', 0),
+                                                    
+                                                (scrollLayout, 'top', 10),
+                                                (scrollLayout, 'left', 5), 
+                                                (scrollLayout, 'right', 5),
+                                                (scrollLayout, 'bottom', 30)])
+    
+    my.text(label=readme_text, align='left', font='fixedWidthFont')
+    my.setParent( '..' )
+    my.showWindow( window )
+
+
+def changelog(*args):
+    '''
+    This function shows a window with the changelog of MaterialCreator.
+    '''
+
+    with open(os.path.join(getScriptPath(), "Changelog.txt"), 'r') as cl:
+        
+        content = cl.readlines()
+
+    cl_text = "".join(content)
+
+    w = 700
+    h = 300
+    window = my.window( title="Changelog", widthHeight=(w, h), sizeable=True)
+    ml = my.columnLayout(adjustableColumn=True )
+    my.text(label="\nMaterialCreator - for Autodesk Maya - CHANGELOG\n", width=w, font='fixedWidthFont')
+    
+
+    form = my.formLayout(parent=ml, width=w)
+    sep = my.separator(style="in", height=3, width=w) 
+    scrollLayout = my.scrollLayout(height=h-70, horizontalScrollBarThickness=16, verticalScrollBarThickness=16, enableBackground=True, backgroundColor=[0.17, 0.17 , 0.17], borderVisible=True)
+    
+    my.formLayout(form, edit=True, attachForm=[(sep, 'top', 5), 
+                                                (sep, 'left', 0), 
+                                                (sep, 'right', 0),
+                                                    
+                                                (scrollLayout, 'top', 10),
+                                                (scrollLayout, 'left', 5), 
+                                                (scrollLayout, 'bottom', 5), 
+                                                (scrollLayout, 'right', 5)])
+    
+    my.text(label=cl_text, align='left', font='fixedWidthFont')
+    my.setParent( '..' )
+    my.showWindow( window )
+
+
+def onlineGuide(*args):
+    webbrowser.open(REPOSITORY_WIKI)
+
+
+def goToSite(*args):
+    onlineGuide()
+    my.deleteUI("updater", window=True)
+
+
+def closeNotifier(*args):
+    my.deleteUI("updater", window=True)
+
+
+def showUpdateNotifier(new_version):
+    w = 360
+    h = 140
+    window = my.window("updater", title="MaterialCreator Update", width=w)
+    my.columnLayout( adjustableColumn=True )
+    my.text(label="\nA newer version of MaterialCreator, is available!\n", font='fixedWidthFont')
+    my.text(label="\nDo you want to proceed to download page?\n", font='fixedWidthFont')
+
+    my.rowColumnLayout(numberOfColumns=2, columnWidth=[(1, 177), (2, 177)], columnSpacing=[(2, 6)])
+    my.button(label="OK", w=177, command=goToSite) 
+    my.button(label="Not now", w=177, command=closeNotifier) 
+
+    my.setParent( '..' )
+    my.showWindow( window )
+
+
 if __name__ == '__main__':
+
+    try:
+        response = urllib2.urlopen(REPOSITORY_WIKI)
+        parser = RepositoryParser()
+        parser.feed(response.read())
+
+        if float(parser.version) > float(VERSION):
+            showUpdateNotifier(parser.version)
+    except:
+        pass
+
     MatCreatorWindow()
