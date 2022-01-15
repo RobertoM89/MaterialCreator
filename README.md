@@ -1,4 +1,6 @@
-MaterialCreator is a script that allows you to quickly create an Arnold/vRay/Octane PBR material in Autodesk Maya by simply selecting the folder containing the textures you want to use.
+# MaterialCreator
+
+**MaterialCreator** is a script that allows you to quickly create an Arnold/vRay/Octane PBR material in Autodesk Maya by simply selecting the folder containing the textures you want to use.
 
 Please read the complete documentation [here](https://robertom89.github.io/MaterialCreator/).
 
