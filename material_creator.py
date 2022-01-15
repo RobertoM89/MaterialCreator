@@ -1103,17 +1103,17 @@ def onlineGuide(*args):
 
 def goToSite(*args):
     onlineGuide()
-    my.deleteUI("updater", window=True)
+    my.deleteUI("updaterMC", window=True)
 
 
 def closeNotifier(*args):
-    my.deleteUI("updater", window=True)
+    my.deleteUI("updaterMC", window=True)
 
 
 def showUpdateNotifier(new_version):
     w = 360
     h = 140
-    window = my.window("updater", title="MaterialCreator Update", width=w)
+    window = my.window("updaterMC", title="MaterialCreator Update", width=w)
     my.columnLayout( adjustableColumn=True )
     my.text(label="\nA newer version of MaterialCreator, is available!\n", font='fixedWidthFont')
     my.text(label="\nDo you want to proceed to download page?\n", font='fixedWidthFont')
@@ -1126,8 +1126,8 @@ def showUpdateNotifier(new_version):
     my.showWindow( window )
 
 
-if __name__ == '__main__':
-
+def main():
+    
     try:
         response = urllib2.urlopen(REPOSITORY_WIKI)
         parser = RepositoryParser()
@@ -1139,3 +1139,9 @@ if __name__ == '__main__':
         pass
 
     MatCreatorWindow()
+
+
+if __name__ == '__main__':
+
+    main()
+
