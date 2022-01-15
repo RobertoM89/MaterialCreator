@@ -1,7 +1,7 @@
 MaterialCreator - for Autodesk Maya
 ======================================
 ***
-**Version 1.4**  
+**Version 1.3**  
 **December 2021**
 
 **Compatibility: Maya 2019, 2020 - Python 2.7**
