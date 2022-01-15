@@ -1022,7 +1022,7 @@ def getScriptPath():
         except:
             pass
 
-    return rootpath
+    return os.path.join(rootpath, "MaterialCreator")
 
 
 def helpmenu(*args):

@@ -7,3 +7,17 @@ Affiliation:    BigRock Institute of Magic Technologies
 Version:        1.3 - December 2021
 Tested on Maya: 2019, 2020
 -----------------------------------------------------------------------
+
+## INSTALLATION ##
+
+Place MaterialCreator folder inside the scripts folder of Maya.
+On Windows it is under:
+<user’s directory>/Documents/maya/scripts/
+On macOS it is under:
+Library/Preferences/Autodesk/maya/scripts/
+
+Copy the content of "material_creator_shelf.py" in a python tab of the Script Editor of Maya,
+then click "Save Script to Shelf..." to call MaterialCreator from a shelf button.
+
+MaterialCreator is a script that allows you to quickly create an Arnold/vRay/Octane PBR material 
+in Autodesk Maya by simply selecting the folder containing the textures you want to use.
