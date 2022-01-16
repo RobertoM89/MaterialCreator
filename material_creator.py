@@ -6,7 +6,7 @@ Material Creator
 Authors:        Roberto Menicatti
 Email:          roberto.menicatti@gmail.it
 Affiliation:    BigRock Institute of Magic Technologies
-Version:        1.3 - December 2021
+Version:        1.4 - January 2022
 Tested on Maya: 2019, 2020
 -----------------------------------------------------------------------
 '''
@@ -22,7 +22,7 @@ import webbrowser
 
 ##### REMEMBER TO UPDATE THIS AT EACH NEW RELEASE ##############################
 
-VERSION = "1.3"
+VERSION = "1.4"
 COMPATIBLE_VERSIONS = ["2019", "2020"]
 REPOSITORY_WIKI = 'https://robertom89.github.io/MaterialCreator/'
 
