@@ -1,0 +1,7 @@
+Changelog v1.4  ****************************
+
+- Add Changelog, Help and Online Guide menus
+- Create online documentation
+- Fix broken connection for opacity map
+- Replace aiMultiply node with colorComposite node 
+  in AO connection for better control
