@@ -796,11 +796,13 @@ class ArnoldMat(Mat):
     def createAO(self):
         file_node = self.addFileNode(self.engine, self.texture_set.ao, self.ao_file)     
 
-        multiply_node = my.shadingNode('aiMultiply', n=self.name + '_multiply', asShader=True)  
-        my.connectAttr(file_node + '.outColor', multiply_node + '.input2')
-        my.connectAttr(self.base_color_file + '.outColor', multiply_node + '.input1')
+        colorcomp_node = my.shadingNode('colorComposite', n=self.name + '_colorComp', asShader=True)  
+        my.connectAttr(file_node + '.outColor', colorcomp_node + '.colorB')
+        my.connectAttr(self.base_color_file + '.outColor', colorcomp_node + '.colorA')
 
-        my.connectAttr(multiply_node + '.outColor', self.mat_node + '.baseColor', force=True)
+        my.setAttr(colorcomp_node + '.operation', 3)
+
+        my.connectAttr(colorcomp_node + '.outColor', self.mat_node + '.baseColor', force=True)
 
     def createSpecular(self):
         file_node = self.addFileNode(self.engine, self.texture_set.specular, self.specular_file)   
@@ -810,7 +812,7 @@ class ArnoldMat(Mat):
 
         my.setAttr(file_node + '.colorSpace', 'Raw', type='string')
         my.setAttr(file_node + '.alphaIsLuminance', True)
-        my.connectAttr(file_node + '.outAlpha', self.mat_node + '.opacity')      
+        my.connectAttr(file_node + '.outColor', self.mat_node + '.opacity')      
 
     def createEmissive(self):
         file_node = self.addFileNode(self.engine, self.texture_set.emissive, self.emissive_file)   
