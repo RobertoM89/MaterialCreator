@@ -810,7 +810,7 @@ class ArnoldMat(Mat):
 
         my.setAttr(file_node + '.colorSpace', 'Raw', type='string')
         my.setAttr(file_node + '.alphaIsLuminance', True)
-        my.connectAttr(file_node + '.outAlpha', self.mat_node + '.opacity')      
+        my.connectAttr(file_node + '.outColor', self.mat_node + '.opacity')      
 
     def createEmissive(self):
         file_node = self.addFileNode(self.engine, self.texture_set.emissive, self.emissive_file)   
