@@ -12,39 +12,46 @@ The latest release of Material Creator is available for **download [here]()**.
 
 ***
 
-- [Quick Guide](https://robertom89.github.io/BigRig/#quick-guide)
-- [Download and Install](https://robertom89.github.io/BigRig/#download-and-install)
-- [Interface](https://robertom89.github.io/BigRig/#interface)
-- [How to Rig Character Limbs with BigRig](https://robertom89.github.io/BigRig/#how-to-rig-character-limbs-with-bigrig)
-    - [Rigging the Legs](https://robertom89.github.io/BigRig/#rigging-the-legs)
-    - [Rigging the Arms](https://robertom89.github.io/BigRig/#rigging-the-arms)
-    - [Rigging the Hands](https://robertom89.github.io/BigRig/#rigging-the-hands)
-    - [Replacing a Control Curve](https://robertom89.github.io/BigRig/#replacing-a-control-curve)
-- [Commands](https://robertom89.github.io/BigRig/#commands)
-    - [Generic Commands](https://robertom89.github.io/BigRig/#generic-commands)
-    - [Arm Rig](https://robertom89.github.io/BigRig/#arm-rig)
-    - [Hand Rig](https://robertom89.github.io/BigRig/#hand-rig)
-    - [Leg Rig](https://robertom89.github.io/BigRig/#leg-rig)
-    - [Control Commands](https://robertom89.github.io/BigRig/#control-commands)
-    - [Shapes](https://robertom89.github.io/BigRig/#shapes)
+- [Quick Guide](https://robertom89.github.io/MaterialCreator/#quick-guide)
+- [Download and Install](https://robertom89.github.io/MaterialCreator/#download-and-install)
 
 ***
 
 ## Quick Guide
-To rig the limbs of your character, place and orient 5 joints on the left leg mesh and 3 joints on the left arm mesh as in the following figures, then freeze their rotations.
 
-<div class="row">
-  <div class="column">
-    <img src="https://robertom89.github.io/BigRig/images/leg_rig_02.jpg" alt="Legs" width="80%"/>
-    <figcaption>Fig.1 - Leg joints</figcaption>
-  </div>
-  <div class="column">
-    <img src="https://robertom89.github.io/BigRig/images/arm_rig_02.jpg" alt="Arms" width="100%"/>
-    <figcaption>Fig.2 - Arm joints</figcaption>
-  </div>
-</div>
+<img src="https://robertom89.github.io/MaterialCreator/images/material_creator_interface.jpg" alt="Interface" width="400"/>
 
+First, enter a name for the material you want to create on the top input field. The material can't be created if a name is not inserted. By default the suffix **"_MAT"** is appended to the name you insert. You can change the text of the suffix in the field below, or convert it into a prefix from the checkbox. If you don't want any prefix or suffix, simply tick *None*.
 
+Click on the folder icon and browse to the folder containing the textures that you want to use for your PBR material, then click on *Save*. The folder must contain the textures for the desired material only, i.e. you cannot have the textures for a wood material and a stone material inside the same folder. The textures files must be named properly, containing the map type in their names (variants like metalness/metallic, ao/occlusion etc. are accepted).
+
+After selecting the folder, MaterialCreator will show in the fields below the files that have been found. If more than one UDIM is found, the number is displayed together with the filename.
+- if you want to change or manually select the file for each map, simply click on **Change** and select the file;
+- if you don't want to load a specific map, simply untick the relative checkbox on the left.
+
+Select the render engine you are using. MaterialCreator supports only Arnold, VRay and Octane.
+
+If you want to immediately assign the new material to your selection, tick **Assign new material to selected elements**.
+
+Finally, click on **Create** to create the new material and leave MaterialCreator open, or click on **Create and Close** to close MaterialCreator after creation.
+
+## Download and Install
+First, download the latest version of MaterialCreator [here](). After downloading the zipped folder, uncompress it wherever you want and move the inner content, i.e. *MaterialCreator* folder, to Maya scripts folder. Depending on how you unzipped the folder, you may have two nested MaterialCreator folders; make sure to move the inner one, which is the one containing the Python files.
+
+You cand find Maya scripts folder here:  
+
+- on **Windows**   
+~~~
+    <user’s directory>/Documents/maya/scripts/  
+~~~
+- on **macOS**  
+~~~
+    Library/Preferences/Autodesk/maya/scripts/  
+~~~
+
+Then, open **material_creator_shelf.py** with a text editor, copy the few lines of code you will find and paste them into Maya *Script Editor*. Click on *File → Save Script to Shelf...* to add MaterialCreator to the active shelf. Finally, click on the new shelf button to run MaterialCreator.
+
+Optionally, you can edit the shelf icon and use the **material_creator.svg** file that you can find inside the *icons* folder of MaterialCreator folder.
 
 <button onclick="topFunction()" id="myBtn" title="Go to top" style="display: none;
   width: 50px;
