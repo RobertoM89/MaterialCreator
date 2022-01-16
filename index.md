@@ -21,11 +21,11 @@ The latest release of Material Creator is available for **download [here]()**.
 
 <img src="https://robertom89.github.io/MaterialCreator/images/material_creator_interface.jpg" alt="Interface" width="400"/>
 
-First, enter a name for the material you want to create on the top input field. The material can't be created if a name is not inserted. By default the suffix **"_MAT"** is appended to the name you insert. You can change the text of the suffix in the field below, or convert it into a prefix from the checkbox. If you don't want any prefix or suffix, simply tick *None*.
+First, enter a name for the material you want to create on the top input field. The material can't be created if a name is not inserted. By default the suffix **"_MAT"** is appended to the name you insert. You can change the text of the suffix in the field below, or convert it into a prefix from the checkbox. If you don't want any prefix or suffix, simply tick **None**.
 
-Click on the folder icon and browse to the folder containing the textures that you want to use for your PBR material, then click on *Save*. The folder must contain the textures for the desired material only, i.e. you cannot have the textures for a wood material and a stone material inside the same folder. The textures files must be named properly, containing the map type in their names (variants like metalness/metallic, ao/occlusion etc. are accepted).
+Click on the folder icon and browse to the folder containing the textures that you want to use for your PBR material, then click on **Save**. The folder must contain the textures for the desired material only, i.e. you cannot have the textures for a wood material and a stone material inside the same folder. The textures files must be named properly, containing the map type in their names (variants like metalness/metallic, ao/occlusion etc. are accepted).
 
-After selecting the folder, MaterialCreator will show in the fields below the files that have been found. If more than one UDIM is found, the number is displayed together with the filename.
+After selecting the folder, MaterialCreator will show the files that have been found in the fields below. If more than one UDIM is found, the number is displayed together with the filename.
 - if you want to change or manually select the file for each map, simply click on **Change** and select the file;
 - if you don't want to load a specific map, simply untick the relative checkbox on the left.
 
