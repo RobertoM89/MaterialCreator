@@ -11,14 +11,21 @@ Tested on Maya: 2019, 2020
 -----------------------------------------------------------------------
 '''
 
+import platform
 import maya.cmds as my
 import os
 import maya.mel as mel
 import re
 import sys
-import urllib2
-from HTMLParser import HTMLParser
 import webbrowser
+
+if platform.python_version().startswith('2'):  
+    from urllib2 import urlopen
+    from HTMLParser import HTMLParser
+elif platform.python_version().startswith('3'):
+    from urllib.request import urlopen
+    from html.parser import HTMLParser
+
 
 ##### REMEMBER TO UPDATE THIS AT EACH NEW RELEASE ##############################
 
@@ -1131,9 +1138,9 @@ def showUpdateNotifier(new_version):
 def main():
     
     try:
-        response = urllib2.urlopen(REPOSITORY_WIKI)
+        response = urlopen(REPOSITORY_WIKI)
         parser = RepositoryParser()
-        parser.feed(response.read())
+        parser.feed(response.read().decode('utf-8'))
 
         if float(parser.version) > float(VERSION):
             showUpdateNotifier(parser.version)
