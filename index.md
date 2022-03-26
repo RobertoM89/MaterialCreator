@@ -1,14 +1,14 @@
 MaterialCreator - for Autodesk Maya
 ======================================
 ***
-**Version 1.4**  
-**January 2022**
+**Version 1.5**  
+**March 2022**
 
-**Compatibility: Maya 2019, 2020 - Python 2.7**
+**Compatibility: Maya 2019, 2020, 2022 - Python 2.7, Python 3**
 
-The latest release of Material Creator is available for **download [here](https://github.com/RobertoM89/MaterialCreator/releases/download/v1.4/MaterialCreator_v1.4.zip)**.
+The latest release of Material Creator is available for **download [here](https://github.com/RobertoM89/MaterialCreator/releases/download/v1.5/MaterialCreator_v1.5.zip)**.
 
-**Material Creator** is a tool for Autodesk Maya developed by **[Roberto Menicatti](https://robertomenicatti.carrd.co/)**. It started as a school side-project at *BigRock Institute of Magic Technologies*. At the moment, further development is not planned to happen on a regular basis.
+**Material Creator** is a tool for Autodesk Maya developed by **[Roberto Menicatti](https://allmylinks.com/robertom89)**. It started as a school side-project at *BigRock Institute of Magic Technologies*. At the moment, further development is not planned to happen on a regular basis.
 
 ***
 
@@ -36,7 +36,7 @@ If you want to immediately assign the new material to your selection, tick **Ass
 Finally, click on **Create** to create the new material and leave MaterialCreator open, or click on **Create and Close** to close MaterialCreator after creation.
 
 ## Download and Install
-First, download the latest version of MaterialCreator [here](https://github.com/RobertoM89/MaterialCreator/releases/download/v1.4/MaterialCreator_v1.4.zip). After downloading the zipped folder, uncompress it wherever you want and move the inner content, i.e. *MaterialCreator* folder, to Maya scripts folder. Depending on how you unzipped the folder, you may have two nested MaterialCreator folders; make sure to move the inner one, which is the one containing the Python files.
+First, download the latest version of MaterialCreator [here](https://github.com/RobertoM89/MaterialCreator/releases/download/v1.5/MaterialCreator_v1.5.zip). After downloading the zipped folder, uncompress it wherever you want and move the inner content, i.e. *MaterialCreator* folder, to Maya scripts folder. Depending on how you unzipped the folder, you may have two nested MaterialCreator folders; make sure to move the inner one, which is the one containing the Python files.
 
 You cand find Maya scripts folder here:  
 
