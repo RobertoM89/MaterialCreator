@@ -1140,7 +1140,7 @@ def main():
     try:
         response = urlopen(REPOSITORY_WIKI)
         parser = RepositoryParser()
-        parser.feed(response.read())
+        parser.feed(response.read().decode('utf-8'))
 
         if float(parser.version) > float(VERSION):
             showUpdateNotifier(parser.version)
