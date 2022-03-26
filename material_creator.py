@@ -6,24 +6,31 @@ Material Creator
 Authors:        Roberto Menicatti
 Email:          roberto.menicatti@gmail.it
 Affiliation:    BigRock Institute of Magic Technologies
-Version:        1.4 - January 2022
-Tested on Maya: 2019, 2020
+Version:        1.5 - March 2022
+Tested on Maya: 2019, 2020, 2022
 -----------------------------------------------------------------------
 '''
 
+import platform
 import maya.cmds as my
 import os
 import maya.mel as mel
 import re
 import sys
-import urllib2
-from HTMLParser import HTMLParser
 import webbrowser
+
+if platform.python_version().startswith('2'):  
+    from urllib2 import urlopen
+    from HTMLParser import HTMLParser
+elif platform.python_version().startswith('3'):
+    from urllib.request import urlopen
+    from html.parser import HTMLParser
+
 
 ##### REMEMBER TO UPDATE THIS AT EACH NEW RELEASE ##############################
 
-VERSION = "1.4"
-COMPATIBLE_VERSIONS = ["2019", "2020"]
+VERSION = "1.5"
+COMPATIBLE_VERSIONS = ["2019", "2020", "2022"]
 REPOSITORY_WIKI = 'https://robertom89.github.io/MaterialCreator/'
 
 ################################################################################
@@ -1131,9 +1138,9 @@ def showUpdateNotifier(new_version):
 def main():
     
     try:
-        response = urllib2.urlopen(REPOSITORY_WIKI)
+        response = urlopen(REPOSITORY_WIKI)
         parser = RepositoryParser()
-        parser.feed(response.read())
+        parser.feed(response.read().decode('utf-8'))
 
         if float(parser.version) > float(VERSION):
             showUpdateNotifier(parser.version)
